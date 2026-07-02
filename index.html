@@ -31,8 +31,34 @@
     </div>
   </section>
 
+  <section>
+    <h2>Our Menu</h2>
+    <div class="menu-grid" id="menu-container"></div>
+  </section>
+
   <footer>
     <p>&copy; 2026 Landing Page. All rights reserved.</p>
   </footer>
+  <script src="my-array.js"></script>
+  <script src="my-object.js"></script>
+  <script>
+    const container = document.getElementById('menu-container');
+
+    foodDatabase.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'menu-card';
+
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="menu-info">
+          <h3>${item.name.charAt(0).toUpperCase() + item.name.slice(1)}</h3>
+          <p class="price">$${item.price.toFixed(2)}</p>
+          <p class="cuisine">${item.cuisine} · ${item.origin}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  </script>
 </body>
 </html>
